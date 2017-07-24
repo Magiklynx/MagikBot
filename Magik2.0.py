@@ -3,7 +3,7 @@ import random  # Import the random library so you can generate random numbers, o
 from time import sleep  # From the time library, import sleep so we can add periods where the program will stall.
 
 client = discord.Client()
-token = 'MjczNTkwMDcwNjQ3MTkzNjAx.C2w3Yg.vbuCTo7Cd7HDhnlSi7Am77n2KL8'
+token = '<BOT TOKEN>'
 
 EIGHT_BALL = ["It is certain", "It is decidedly so", "Without a doubt", "Yes definitely", "You may rely on it",
 			  "As I see it yes", "Most likely", "Outlook good", "Yes", "Signs point to yes", "Reply hazy try again",
@@ -12,11 +12,9 @@ EIGHT_BALL = ["It is certain", "It is decidedly so", "Without a doubt", "Yes def
 
 KILL = (['a knife', 'a hammer', 'a bat', 'a piece of paper', 'an m1911', 'a nuke', 'an axe', 'a dildo'])
 
-ADMINS = (["124230684687597568"])
+ADMINS = ([<LIST ADMINS>, <LIKE THIS>])
 
-OWNER = "124230684687597568"
-
-BOT = "273590070647193601"
+BOT = "<YOUR BOT ID>"
 
 
 @client.event
@@ -57,9 +55,9 @@ async def cmd_kill(message, target_user: discord.Member = None):
 	if target_user is None:
 		target_user = message.author.mention
 
-	if message.author.id == OWNER and target_user == "<@" + OWNER + ">":
+	if message.author.id in ADMIN and target_user == "<@" + ADMIN[0] + ">":
 		await client.send_message(message.channel, "Are you sure, mommy?")
-	elif message.author.id == OWNER and target_user == "<@" + BOT + ">":
+	elif message.author.id in ADMIN and target_user == "<@" + BOT + ">":
 		await client.send_message(message.channel, "I'm sorry mommy, I won't do it again.")
 	elif target_user == "<@" + BOT + ">":
 		await client.send_message(message.channel,
@@ -137,7 +135,7 @@ async def cmd_hug(message, target_user):
 
 
 async def cmd_love(message, target_user):
-	if target_user == "<@" + OWNER + ">":
+	if target_user == "<@" + ADMIN[0] + ">":
 		await client.send_message(message.channel, message.author.mention + " loves " + target_user + ". Just like everybody else")
 		await client.send_file(message.channel, "images/love.jpg")
 	elif message.author.mention == target_user:
